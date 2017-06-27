@@ -121,9 +121,10 @@ switch($requestString){
                 `comments`.`msg` as `msg`, 
                 `users`.`name` as `author`, 
                 `users`.`mail` as `email`, 
-                `comments`.`timestamp` as `msg_timestamp`
+                UNIX_TIMESTAMP(`comments`.`timestamp`) as `msg_timestamp`
             FROM `users` INNER JOIN `comments` ON `users`.`id` = `comments`.`users_id`
-            ORDER BY `comments`.`timestamp` DESC
+            WHERE `comments`.`approved` = FALSE
+            ORDER BY `comments`.`timestamp` ASC
         ")){
             feedback(array(
                 'error' => 0,

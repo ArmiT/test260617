@@ -1,5 +1,5 @@
 <!-- Linking js and styles -->
-<script type="text/javascript" src="js/public.js?v=0.1.16"></script>
+<script type="text/javascript" src="js/public.min.js?v=0.1.16"></script>
 <link rel="stylesheet" href="styles/public.css?v=0.1.0">
 <title>Гостевая книга</title>
 </head>
@@ -34,12 +34,7 @@
                     </a>
                 </li>
                 <!-- Pages -->
-                <li><a href="#">1</a></li>
-                <li><a href="#">2</a></li>
-                <li><a href="#">3</a></li>
-                <li><a href="#">4</a></li>
-                <li><a href="#">5</a></li>
-                <li>
+                <li id="page-next" onclick="nextPage()">
                     <a href="#" aria-label="Next">
                         <span aria-hidden="true">&raquo;</span>
                     </a>
@@ -50,30 +45,6 @@
             </ul>
         </nav>
         <ul class="list-group" id="msg-board">
-            <li class="list-group-item">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">User1 (12.03.2016)</h3>
-                    </div>
-                    <div class="panel-body">I hope it looks decent</div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">User2 (11.03.2016)</h3>
-                    </div>
-                    <div class="panel-body">Let's just say i hate designing!</div>
-                </div>
-            </li>
-            <li class="list-group-item">
-                <div class="panel panel-primary">
-                    <div class="panel-heading">
-                        <h3 class="panel-title">User3 (10.03.2016)</h3>
-                    </div>
-                    <div class="panel-body">Nobody is gonna read it so...</div>
-                </div>
-            </li>
         </ul>
     </div>
     
