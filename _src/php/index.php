@@ -13,6 +13,8 @@ if (mysqli_connect_errno()){
     die("MySQL connection failed.");
 }
 
+session_start();
+
 # Settings.
 # html pages location.
 $html = "html/";
@@ -26,6 +28,8 @@ switch($_GET["mode"]){
         $type = "admin";
         break;
 }
+
+$_SESSION['usertype'] = $type;
 
 # Calling appropriate script.
 require_once $type.".php";
