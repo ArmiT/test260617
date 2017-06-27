@@ -35,13 +35,14 @@ function sendComment(){
         text: text
     });
     if (promise)
-        promise.done(function(data){
+        promise.done(function(dataObj){
+            var data = JSON.parse(dataObj);
             if (data.error){
                 console.error(data.text);
-            } else {
-                $('#comment-modal').modal('hide');
-                $('#thx-modal').modal('show');
+                return;
             }
+            $('#comment-modal').modal('hide');
+            $('#thx-modal').modal('show');
         });
 }
 
