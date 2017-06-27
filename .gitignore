@@ -1,0 +1,6 @@
+# Node directory
+node_modules
+
+# EER-diagram
+*.mwb
+*.bak
