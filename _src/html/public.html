@@ -1,6 +1,6 @@
 <!-- Linking js and styles -->
-<script type="text/javascript" src="js/public.min.js?v=0.1.0"></script>
-<link type="text/css" src="styles/public.css?v=0.1.0">
+<script type="text/javascript" src="js/public.min.js?v=0.1.4"></script>
+<link rel="stylesheet" href="styles/public.css?v=0.1.0">
 <title>Гостевая книга</title>
 </head>
 <body>
@@ -16,12 +16,94 @@
                 <a class="navbar-brand" href="#">Гостевая книга</a>
             </div>
             <div class="collapse navbar-collapse" id="navbar-collapse">
-                <form class="navbar-form navbar-right">
-                    <div class="form-group">
-                        <input type="text" class="form-control" placeholder="Search">
-                    </div>
-                    <button class="btn btn-default">Submit</button>
-                </form>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href='#' onclick="newComment()">Оставить сообщение <span class="glyphicon glyphicon-envelope"></span></a></li>
+                </ul>
             </div>
         </div>
     </nav>
+    <div class="container">
+        <div class="page-header">
+            <h1>Доска сообщений <small>Сообщения, оставленные пользователями системы</small></h1>
+        </div>
+        <nav aria-label="Page navigation">
+            <ul class="pagination" id="page-control">
+                <li id="page-prev">
+                    <a href="#" aria-label="Previous" onclick="prevPage()">
+                        <span aria-hidden="true">&laquo;</span>
+                    </a>
+                </li>
+                <!-- Pages -->
+                <li><a href="#">1</a></li>
+                <li><a href="#">2</a></li>
+                <li><a href="#">3</a></li>
+                <li><a href="#">4</a></li>
+                <li><a href="#">5</a></li>
+                <li>
+                    <a href="#" aria-label="Next">
+                        <span aria-hidden="true">&raquo;</span>
+                    </a>
+                </li>
+            </ul>
+        </nav>
+        <ul class="list-group" id="msg-board">
+            <li class="list-group-item">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User1 (12.03.2016)</h3>
+                    </div>
+                    <div class="panel-body">I hope it looks decent</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User2 (11.03.2016)</h3>
+                    </div>
+                    <div class="panel-body">Let's just say i hate designing!</div>
+                </div>
+            </li>
+            <li class="list-group-item">
+                <div class="panel panel-primary">
+                    <div class="panel-heading">
+                        <h3 class="panel-title">User3 (10.03.2016)</h3>
+                    </div>
+                    <div class="panel-body">Nobody is gonna read it so...</div>
+                </div>
+            </li>
+        </ul>
+    </div>
+    
+    <div class="modal fade" tabindex="-1" role="dialog" id="comment-modal">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Оставить сообщение на сайте</h4>
+                </div>
+                <div class="modal-body">
+                    <form id="input-form">
+                        <p>Имя может включать русские и латинские буквы, а так же цифры 0-9 и пробел.</p>
+                        <p>Длина имени - 3-255 символов.</p>
+                        <div class="form-group" id="name-group">
+                            <label for="name">Имя</label>
+                            <input type="text" class="form-control" id="name" placeholder="Имя" onchange="resetValState('#name-group')" maxlength="255">
+                        </div>
+                        <div class="form-group" id="email-group">
+                            <label for="email">Почтовый адрес</label>
+                            <input type="email" class="form-control" id="email" placeholder="E-mail" onchange="resetValState('#email-group')" maxlength="254">
+                        </div>
+                        <div class="form-group" id="text-group">
+                            <label for="text">Текст сообщения (макс. 512 символов)</label>
+                            <textarea class="form-control" id="text" placeholder="Сообщение" onchange="resetValState('#text-group')" maxlength="512"></textarea>
+                        </div>
+                    </form>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Закрыть</button>
+                    <button type="button" class="btn btn-primary" onclick="sendComment()">Отправить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    
