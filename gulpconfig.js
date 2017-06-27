@@ -40,6 +40,11 @@ gulp.task('htmlpage', function() {
         .pipe(concat('admin.html'))
         .pipe(minifyHTML())
         .pipe(gulp.dest('build'));
+    
+    gulp.scr(['_src/html/header.html', '_src/html/errors/404.html', '_src/html/footer.html'])
+        .pipe(concat('404.html'))
+        .pipe(minifyHTML())
+        .pipe(gulp.dest('build/errors'));
 });
 
 // PHP minimize
