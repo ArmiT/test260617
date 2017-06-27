@@ -31,8 +31,6 @@ switch($_GET["mode"]){
 require_once $type.".php";
 
 # Displaying.
-require_once $html."header.html";
 require_once $html.$type.".html";
-require_once $html."footer.html";
 
 ?>
