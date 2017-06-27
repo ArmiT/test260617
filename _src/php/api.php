@@ -3,6 +3,19 @@
 # API for accessing database dynamically.
 $encoding = "UTF-8";
 
+# Connecting to database.
+$host = "localhost";
+$user = "user";
+$pass = "password";
+$dbname = "twins_practice";
+
+$mysql = mysqli_connect($host,$user,$pass,$dbname);
+
+if (mysqli_connect_errno()){
+    http_response_code(500);
+    die("MySQL connection failed.");
+}
+
 # Send data or error information back.
 function feedback($code, $arr){
     http_response_code($code);

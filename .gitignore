@@ -4,3 +4,10 @@ node_modules
 # EER-diagram
 *.mwb
 *.bak
+
+# Build parts
+build/*.html
+build/*.php
+build/errors
+build/js
+build/styles

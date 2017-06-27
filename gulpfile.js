@@ -5,7 +5,6 @@ var gulp = require('gulp');
 var minifyHTML = require('gulp-minify-html');
 var concat = require('gulp-concat');
 var uglify = require('gulp-uglify');
-var minifyPHP = require('@cedx/gulp-php-minify');
 var sass = require('gulp-sass');
 
 // Concat and optimize.
@@ -41,7 +40,7 @@ gulp.task('htmlpage', function() {
         .pipe(minifyHTML())
         .pipe(gulp.dest('build'));
     
-    gulp.scr(['_src/html/header.html', '_src/html/errors/404.html', '_src/html/footer.html'])
+    gulp.src(['_src/html/header.html', '_src/html/errors/404.html', '_src/html/footer.html'])
         .pipe(concat('404.html'))
         .pipe(minifyHTML())
         .pipe(gulp.dest('build/errors'));
@@ -49,20 +48,20 @@ gulp.task('htmlpage', function() {
 
 // PHP minimize
 gulp.task('php', function() {
-    gulp.src('_src/php/*.php', {read: false})
-        .pipe(minifyPHP({binary: 'S:/php7/php.exe'}))
+    gulp.src('_src/php/*.php')
         .pipe(gulp.dest('build'));
 });
 
 
 // SASS
 gulp.task('styles', function() {
-    var srcDir = concatDir('_src/styles/*.scss');
-    var dstDir = concatDir('styles');
-    
-    gulp.src('_src/styles/*.scss')
+    gulp.src(['_src/styles/shared.scss', '_src/styles/public.scss'])
         .pipe(sass())
-        .pipe(concat('styles.css'))
+        .pipe(concat('public.css'))
+        .pipe(gulp.dest('build/styles'));
+    gulp.src(['_src/styles/shared.scss', '_src/styles/admin.scss'])
+        .pipe(sass())
+        .pipe(concat('admin.css'))
         .pipe(gulp.dest('build/styles'));
 });
 
