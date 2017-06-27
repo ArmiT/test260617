@@ -6,8 +6,4 @@ node_modules
 *.bak
 
 # Build parts
-build/*.html
-build/*.php
-build/errors
-build/js
-build/styles
+build/*

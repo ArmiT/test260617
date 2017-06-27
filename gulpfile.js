@@ -33,17 +33,17 @@ gulp.task('htmlpage', function() {
     gulp.src(['_src/html/header.html', '_src/html/public.html', '_src/html/footer.html'])
         .pipe(concat('public.html'))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('build/html'));
     
     gulp.src(['_src/html/header.html', '_src/html/admin.html', '_src/html/footer.html'])
         .pipe(concat('admin.html'))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build'));
+        .pipe(gulp.dest('build/html'));
     
     gulp.src(['_src/html/header.html', '_src/html/errors/404.html', '_src/html/footer.html'])
         .pipe(concat('404.html'))
         .pipe(minifyHTML())
-        .pipe(gulp.dest('build/errors'));
+        .pipe(gulp.dest('build/html/errors'));
 });
 
 // PHP minimize
@@ -65,4 +65,9 @@ gulp.task('styles', function() {
         .pipe(gulp.dest('build/styles'));
 });
 
-gulp.task('build', ['scripts', 'htmlpage', 'php', 'styles']);
+gulp.task('move_leftovers', function(){
+    gulp.src(['_src/.htaccess'])
+        .pipe(gulp.dest('build'));
+});
+
+gulp.task('build', ['scripts', 'htmlpage', 'php', 'styles', 'move_leftovers']);

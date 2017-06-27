@@ -7,6 +7,10 @@ session_start();
 $html = "html/";
 
 # Routing.
+if (!isset($_GET["mode"])){
+    header("Location: html/errors/404.html");
+    exit;
+}
 switch($_GET["mode"]){
     case "public":
         $type = "public";
