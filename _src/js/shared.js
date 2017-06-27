@@ -47,7 +47,7 @@ function refreshList(){
     }
     // adding pages
     var newPageCount = Math.ceil(msglist.length / 10.0);
-    var target = $('#page-control li:first');
+    var target = $('#page-control li:nth-child(2)');
     for(i=0; i<newPageCount-1; ++i){
         $('<li>').append(
             $('<a>')
@@ -55,7 +55,7 @@ function refreshList(){
             .text((i*10+1)+'-'+(i+1)*10)
             .attr('onclick', 'displayPage('+i*10+')')
         )
-        .insertAfter(target);
+        .insertBefore(target);
     }
     if (msglist.length > 0){
         $('<li>')
@@ -65,7 +65,7 @@ function refreshList(){
             .text(((newPageCount-1)*10+1)+'-'+msglist.length)
         )
         .attr('onclick', 'displayPage('+(newPageCount-1)*10+')')
-        .insertAfter(target);
+        .insertBefore(target);
     } else {
         $('<li>')
         .append(

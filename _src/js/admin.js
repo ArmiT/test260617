@@ -1,5 +1,5 @@
 // Admin only functionality.
-var effectTimeout = 2500;
+var effectTimeout = 750;
 
 // discard chosen comment (delete from database)
 function discardComment(commentId){
@@ -14,8 +14,9 @@ function discardComment(commentId){
                 return;
             }
             // success
-            $('#msg-board #comment-'+commentId).addClass('panel-danger').fadeOut(effectTimeout).remove();
+            $('#msg-board #comment-'+commentId).addClass('panel-danger').fadeOut(effectTimeout);
             setTimeout(function(){
+                $('#msg-board #comment-'+commentId).remove();
                 update();
             }, effectTimeout);
         });
@@ -34,8 +35,9 @@ function approveComment(commentId){
                 return;
             }
             // success
-            $('#msg-board #comment-'+commentId).addClass('panel-success').fadeOut(effectTimeout).remove();
+            $('#msg-board #comment-'+commentId).addClass('panel-success').fadeOut(effectTimeout);
             setTimeout(function(){
+                $('#msg-board #comment-'+commentId).remove();
                 update();
             }, effectTimeout);
         });
