@@ -28,6 +28,21 @@ function sendComment(){
         $('#text-group').addClass('has-error');
         return;
     }
+    
+    var promise = ajaxRequest('comment', {
+        name: name,
+        email: email,
+        text: text
+    });
+    if (promise)
+        promise.done(function(data){
+            if (data.error){
+                console.error(data.text);
+            } else {
+                $('#comment-modal').modal('hide');
+                $('#thx-modal').modal('show');
+            }
+        });
 }
 
 // Reset effect of error on input groups

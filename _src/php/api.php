@@ -3,30 +3,29 @@
 # API for accessing database dynamically.
 $encoding = "UTF-8";
 
+# Send data or error information back.
+function feedback($arr){
+    die(json_encode($arr));
+}
+
+function intError($error, $text){
+    feedback(array(
+        'error' => $error,
+        'text' => $text
+    ));
+}
+
 # Connecting to database.
 $host = "localhost";
-$user = "user";
-$pass = "password";
+# File with database connection settings (login, psw).
+# Should be excluded from project view.
+require_once "db_conf.dsf";
 $dbname = "twins_practice";
 
 $mysql = mysqli_connect($host,$user,$pass,$dbname);
 
 if (mysqli_connect_errno()){
-    http_response_code(500);
-    die("MySQL connection failed.");
-}
-
-# Send data or error information back.
-function feedback($code, $arr){
-    http_response_code($code);
-    die(json_encode($arr));
-}
-
-function intError($error, $text){
-    feedback(500, array(
-        'error' => $error,
-        'text' => $text
-    ));
+    intError(1, 'Database connection error');
 }
 
 session_start();
@@ -47,12 +46,13 @@ switch($requestString){
             WHERE `comments`.`approved` = TRUE
             ORDER BY `comments`.`timestamp` DESC
         ")){
-            feedback(200, array(
+            feedback(array(
+                'error' => 0,
                 'data' => $result->fetch_all(MYSQLI_ASSOC),
                 'timestamp' => time()
             ));
         } else {
-            intError(1, 'Database error: '.$mysql->error());
+            intError(1, 'Database error: '.$mysql->error);
         }
         break;
     # New comment
@@ -60,9 +60,9 @@ switch($requestString){
         # Checking input        
         $name = $_POST['name'];
         $mail = $_POST['email'];
-        $msg = $_POST['msg'];
+        $msg = $_POST['text'];
         
-        if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9]+$/g', $name)) {
+        if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9]+$/', $name)) {
             $error = 1;
             $text = 'Неккоретные символы в имени';
         }
@@ -71,7 +71,7 @@ switch($requestString){
             $error = 2;
             $text = 'Длина имени находится вне диапазона 3-255';
         }
-        if (!preg_match('/^[\w.]+@\w+\.\w+$/g', $mail)){
+        if (!preg_match('/^[\w.]+@\w+\.\w+$/', $mail)){
             $error = 3;
             $text = 'Неккоретный формат почтового адреса';
         }
@@ -83,7 +83,7 @@ switch($requestString){
         
         # Feedback.
         if ($error > 0){
-            feedback(400, array(
+            feedback(array(
                 'error' => 100 + $error,
                 'text' => $text
             ));
@@ -91,22 +91,23 @@ switch($requestString){
         
         # Adding data.
         # Adding user if not exists.
-        $result = $mysql->query("SELECT `mail` FROM `users` WHERE ");
-        if (!$result)intError(1, 'Database error');
+        $result = $mysql->query("SELECT `id` FROM `users` WHERE `mail` LIKE '$mail'");
+        if (!$result)intError(2, 'Database error: '.$mysql->error);
         if ($row = $result->fetch_row()){
             $userId = $row[0];
         } else {
             // user does not exist
             if (!$mysql->query("INSERT INTO `users` (`name`, `mail`) VALUES ('$name','$mail')"))
-                intError(1, 'Database error');
+                intError(3, 'Database error: '.$mysql->error);
             $userId = $mysql->insert_id;
         }
         # Adding comment
         if (!$mysql->query("INSERT INTO `comments` (`users_id`, `msg`) VALUES ($userId, '$msg')"))
-            intError(1, 'Database error');
+            intError(4, 'Database error: '.$mysql->error);
         
         # Feedback
-        feedback(200, array(
+        feedback(array(
+            'error' => 0,
             'data' => null,
             'timestamp' => time()
         ));
@@ -124,35 +125,38 @@ switch($requestString){
             FROM `users` INNER JOIN `comments` ON `users`.`id` = `comments`.`users_id`
             ORDER BY `comments`.`timestamp` DESC
         ")){
-            feedback(200, array(
+            feedback(array(
+                'error' => 0,
                 'data' => $result->fetch_all(MYSQLI_ASSOC),
                 'timestamp' => time()
             ));
         } else {
-            intError(1, 'Database error: '.$mysql->error());
+            intError(5, 'Database error: '.$mysql->error);
         }
         break;
     # Discard comment
     case 'admin-delete':
         $commentId = $_POST['comment_id'];
         if ($mysql->query("DELETE FROM `comments` WHERE `id` = $commentId"))
-            feedback(200, array(
+            feedback(array(
+                'error' => 0,
                 'data' => null,
                 'timestamp' => time()
             ));
         else
-            intError(1, 'Database error: '.$mysql->error());
+            intError(6, 'Database error: '.$mysql->error);
         break;
     # Approve comment
     case 'admin-approve':
         $commentId = $_POST['comment_id'];
         if ($mysql->query("UPDATE `comments` SET `approved` = TRUE WHERE `id` = $commentId"))
-            feedback(200, array(
+            feedback(array(
+                'error' => 0,
                 'data' => null,
                 'timestamp' => time()
             ));
         else
-            intError(1, 'Database error: '.$mysql->error());
+            intError(7, 'Database error: '.$mysql->error);
         break;
 }
 

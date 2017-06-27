@@ -66,7 +66,7 @@ gulp.task('styles', function() {
 });
 
 gulp.task('move_leftovers', function(){
-    gulp.src(['_src/.htaccess'])
+    gulp.src(['_src/.htaccess','_src/php/db_conf.dsf'])
         .pipe(gulp.dest('build'));
 });
 
