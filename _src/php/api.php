@@ -28,9 +28,7 @@ if (mysqli_connect_errno()){
     intError(1, 'Database connection error');
 }
 
-session_start();
-
-$requestString = $_SESSION['usertype'].'-'.$_POST['request'];
+$requestString = $_POST['request'];
 
 switch($requestString){
     # Update list

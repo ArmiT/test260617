@@ -1,5 +1,7 @@
 // Public only functionality.
 
+usertype = "public";
+
 // Display modal
 function newComment(){
     $('#comment-modal').modal({
@@ -29,7 +31,7 @@ function sendComment(){
         return;
     }
     
-    var promise = ajaxRequest('comment', {
+    var promise = ajaxRequest('public-comment', {
         name: name,
         email: email,
         text: text
@@ -51,39 +53,21 @@ function resetValState(id){
     $(id).removeClass('has-error');
 }
 
-// display page with given offset
-function displayPage(offset){
-    // clearing messages
-    $('#msg-board > *').remove();
-    
-    var board = $('#msg-board');
-    // displaying 10 or less
-    var upLimit = (9 + offset >= msglist.length) ? (msglist.length - offset) : 10;
-    for(i=0; i<upLimit;++i){
-        var datetime = new Date(msglist[i+offset].msg_timestamp*1000);
-        var day = datetime.getDate();
-        var month = datetime.getMonth();
-        var year = datetime.getFullYear();
-        var hours = datetime.getHours();
-        var minutes = datetime.getMinutes();
-        
-        var timeString = day + "." + month + "." + year + " " + hours + ":" + minutes;
-        board.append(
+// construct function for elements of a page
+function createMsgPanel(elementData, timeString){
+    return $('<div>')
+        .addClass('panel panel-primary')
+        .append(
             $('<div>')
-            .addClass('panel panel-primary')
+            .addClass('panel-heading')
             .append(
-                $('<div>')
-                .addClass('panel-heading')
-                .append(
-                    $('<h3>')
-                    .addClass('panel-title').text(msglist[i+offset].author + " ("+timeString+")")
-                )
+                $('<h3>')
+                .addClass('panel-title').text(elementData.author + " ("+timeString+")")
             )
-            .append(
-                $('<div>')
-                .addClass('panel-body')
-                .text(msglist[i+offset].msg)
-            )
+        )
+        .append(
+            $('<div>')
+            .addClass('panel-body')
+            .text(elementData.msg)
         );
-    }
 }
