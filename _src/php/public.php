@@ -1,8 +1,6 @@
 <?php
 
-$title = "Гостевая книга";
-
-# Getting data from database.
-
+$_SESSION['usertype'] = "public";
+require_once $html."public.html";
 
 ?>

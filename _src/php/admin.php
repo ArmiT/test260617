@@ -1,8 +1,6 @@
 <?php
 
-$title = "Модерирование сообщений";
-
-# Getting data from database.
-
+$_SESSION['usertype'] = "admin";
+require_once $html."admin.html";
 
 ?>
