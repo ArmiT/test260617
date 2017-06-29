@@ -63,3 +63,9 @@ $dbname = "twins_practice"; // Выбор схемы БД
 Проект можно протестировать по следующим ссылкам:
 - [Публичная часть](http://test.energet.xyz/public.php)
 - [Администрирование](http://test.energet.xyz/admin.php)
+- [Страница ошибки 404](http://test.energet.xyz/wrong.page)
+
+## Ресурсы
+[Иконка сайта](_src/images/favicon.png) взята с [www.freefavicon.com](https://www.freefavicon.com/freefavicons/objects/iconinfo/book-stack---pile-de-livres-152-171409.html)
+
+[GIF 404.gif](_src/images/404.gif) принадлежит посту [Where is everybody!?](http://imgur.com/BuA7OEf)

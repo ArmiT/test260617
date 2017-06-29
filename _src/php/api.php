@@ -91,9 +91,10 @@ switch($requestString){
         $result = $mysql->query("SELECT `id` FROM `users` WHERE `mail` LIKE '$mail'");
         if (!$result)intError(2, 'Database error: '.$mysql->error);
         if ($row = $result->fetch_row()){
+            // user exists - taking id
             $userId = $row[0];
         } else {
-            // user does not exist
+            // user does not exist - adding and taking id
             if (!$mysql->query("INSERT INTO `users` (`name`, `mail`) VALUES ('$name','$mail')"))
                 intError(3, 'Database error: '.$mysql->error);
             $userId = $mysql->insert_id;
@@ -102,7 +103,7 @@ switch($requestString){
         if (!$mysql->query("INSERT INTO `comments` (`users_id`, `msg`) VALUES ($userId, '$msg')"))
             intError(4, 'Database error: '.$mysql->error);
         
-        # Feedback
+        # Success
         feedback(array(
             'error' => 0,
             'data' => null,
@@ -135,26 +136,28 @@ switch($requestString){
     # Discard comment
     case 'admin-delete':
         $commentId = $_POST['comment_id'];
-        if ($mysql->query("DELETE FROM `comments` WHERE `id` = $commentId"))
+        if ($mysql->query("DELETE FROM `comments` WHERE `id` = $commentId")){
             feedback(array(
                 'error' => 0,
                 'data' => null,
                 'timestamp' => time()
             ));
-        else
+        } else {
             intError(6, 'Database error: '.$mysql->error);
+        }
         break;
     # Approve comment
     case 'admin-approve':
         $commentId = $_POST['comment_id'];
-        if ($mysql->query("UPDATE `comments` SET `approved` = TRUE WHERE `id` = $commentId"))
+        if ($mysql->query("UPDATE `comments` SET `approved` = TRUE WHERE `id` = $commentId")){
             feedback(array(
                 'error' => 0,
                 'data' => null,
                 'timestamp' => time()
             ));
-        else
+        } else {
             intError(7, 'Database error: '.$mysql->error);
+        }
         break;
 }
 

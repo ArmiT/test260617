@@ -6,7 +6,7 @@ var requestReady = true;
 
 // perform AJAX request to server
 function ajaxRequest(type, data){
-    if (requestReady == false) return false;
+    if (!requestReady) return false;
     obj = data;
     obj['request'] = type;
     // POST request to server

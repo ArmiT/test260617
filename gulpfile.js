@@ -84,6 +84,8 @@ gulp.task('styles', function() {
 gulp.task('move_leftovers', function(){
     gulp.src(['_src/.htaccess','_src/php/db_conf.dsf'])
         .pipe(gulp.dest('build'));
+    gulp.src(['_src/images/*'])
+        .pipe(gulp.dest('build/images'));
 });
 
 // Clean build directory
