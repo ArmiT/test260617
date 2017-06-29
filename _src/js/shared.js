@@ -15,7 +15,7 @@ function ajaxRequest(type, data){
     // Return promise
     var promise = $.post('api.php', obj)
     .always(function(){ 
-        requestReady=true;
+        requestReady = true;
     });
     
     return promise;
@@ -82,6 +82,9 @@ function refreshList(){
     displayPage(0);
 }
 
+// date formatting settings
+var monthStr = ["Янв","Фев","Марта","Апр","Мая","Июня","Июля","Авг","Сен","Окт","Ноя","Дек"];
+
 // display page with given offset
 function displayPage(offset){
     // clearing messages
@@ -99,12 +102,14 @@ function displayPage(offset){
     for(i=0; i<upLimit;++i){
         var datetime = new Date(msglist[i+offset].msg_timestamp*1000);
         var day = datetime.getDate();
-        var month = datetime.getMonth();
+        var month = monthStr[datetime.getMonth()];
         var year = datetime.getFullYear();
         var hours = datetime.getHours();
+        if (hours < 10) hours = "0" + hours;
         var minutes = datetime.getMinutes();
+        if (minutes < 10) minutes = "0" + minutes;
         
-        var timeString = day + "." + month + "." + year + " " + hours + ":" + minutes;
+        var timeString = day + " " + month + " " + year + "г. в " + hours + ":" + minutes;
         // call to specific construct functions for each module
         board.append(createMsgPanel(msglist[i+offset], timeString));
     }

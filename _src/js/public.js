@@ -62,7 +62,7 @@ function createMsgPanel(elementData, timeString){
             .addClass('panel-heading')
             .append(
                 $('<h3>')
-                .addClass('panel-title').text(elementData.author + " ("+timeString+")")
+                .addClass('panel-title').text("Пользователь " + elementData.author + " написал(а) " + timeString)
             )
         )
         .append(

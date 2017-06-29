@@ -1,5 +1,5 @@
 <!-- Linking js and styles -->
-<script type="text/javascript" src="js/public.js?v=0.1.18"></script>
+<script type="text/javascript" src="js/public.min.js?v=0.1.18"></script>
 <link rel="stylesheet" href="styles/public.css?v=0.1.0">
 <title>Гостевая книга</title>
 </head>
@@ -26,7 +26,8 @@
         <div class="page-header">
             <h1>Доска сообщений <small>Сообщения, оставленные пользователями системы</small></h1>
         </div>
-        <nav aria-label="Page navigation">
+        <ul class="list-group" id="msg-board"></ul>
+        <nav aria-label="Page navigation" class="text-center">
             <ul class="pagination" id="page-control">
                 <li id="page-prev">
                     <a href="#" aria-label="Previous" onclick="prevPage()">
@@ -44,7 +45,6 @@
                 </li>
             </ul>
         </nav>
-        <ul class="list-group" id="msg-board"></ul>
     </div>
     
     <div class="modal fade" tabindex="-1" role="dialog" id="comment-modal">
