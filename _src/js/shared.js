@@ -78,7 +78,7 @@ function refreshList(){
         )
         .insertBefore(target);
     }
-    // display 1st page. this function is to be defined for each module
+    // display 1st page
     displayPage(0);
 }
 
@@ -110,7 +110,7 @@ function displayPage(offset){
         if (minutes < 10) minutes = "0" + minutes;
         
         var timeString = day + " " + month + " " + year + "г. в " + hours + ":" + minutes;
-        // call to specific construct functions for each module
+        // call to specific construct function for each module
         board.append(createMsgPanel(msglist[i+offset], timeString));
     }
 }

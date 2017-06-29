@@ -1,13 +1,15 @@
 <?php
 
 # API for accessing database dynamically.
+# Setting default encoding for mbstring functions.
 $encoding = "UTF-8";
 
-# Send data or error information back.
+# Return data or error information.
 function feedback($arr){
     die(json_encode($arr));
 }
 
+# Template to simplify error return.
 function intError($error, $text){
     feedback(array(
         'error' => $error,
@@ -15,23 +17,20 @@ function intError($error, $text){
     ));
 }
 
-# Connecting to database.
-$host = "localhost";
-# File with database connection settings (login, psw).
-# Should be excluded from project view.
+# Including file with database connection settings (login, psw).
+# Should be excluded from project view when using version control system.
 require_once "db_conf.dsf";
-$dbname = "twins_practice";
 
+# Connecting to database.
 $mysql = mysqli_connect($host,$user,$pass,$dbname);
-
 if (mysqli_connect_errno()){
     intError(1, 'Database connection error');
 }
 
+# Routing request.
 $requestString = $_POST['request'];
-
 switch($requestString){
-    # Update list
+    # Update msg list
     case 'public-update':
         # Fetching all approved posts
         if ($result = $mysql->query("
@@ -55,12 +54,12 @@ switch($requestString){
         break;
     # New comment
     case 'public-comment':
-        # Checking input        
+        # Double checking input, never trust client!
         $name = $_POST['name'];
         $mail = $_POST['email'];
         $msg = $_POST['text'];
         
-        if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9]+$/', $name)) {
+        if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9\s]+$/', $name)) {
             $error = 1;
             $text = 'Неккоретные символы в имени';
         }
