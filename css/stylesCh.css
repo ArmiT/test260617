@@ -1,11 +1,3 @@
-body{
-	//font-family:T;
-    margin: 0px;
-    padding:0px;
-    background-color: rgb(255, 255, 255);
-	width: 100%;
-
-}
 div#std{
 	margin: 0px 0px 0px 0px;
     width: 100%;
@@ -48,18 +40,6 @@ div#clmnT{
 	padding: 0px 10% 0px 0%;
 	text-align: left;
 }
-div#header
-{
-	margin: 0px 0px 2px 0px;
-	background-color: rgb(0, 0, 0);
-    text-align: center;
-    position:relative;
-	padding: 1%;
-	font-size: 40px ;
-    width: 98%;
-	float:left;
-    color: white;
-}
 div#head{
     color: #ffffff;
     font-size: 18px ;
@@ -99,14 +79,30 @@ div#all
     color: black;
 }
 
-div#pink
+div#sos
 {
-    background-color: rgba(131, 229, 248, 1);
-    width: 100%;
+    margin: 0px 0px 2px 0px;
+    background-color: rgba(248, 255, 143, 1);
+    text-align: center;
+    position:relative;
+    padding: 1%;
+    font-size: 18px ;
+    width: 98%;
+    float:left;
+    color: grey;
 }
+
+div#sos a
+{
+    list-style: none;
+    color: black;
+    text-decoration: none;
+    font-size: 18px ;
+}
+
 div#strr
 {
-	margin: 0px 0px 2px 0px;
+	margin: 4px 0px 4px 0px;
     text-align: center;
     position:relative;
     padding: 0% 0% 0% 0% ;
@@ -121,14 +117,4 @@ div#strr a
     color: black;
     text-decoration: none;
 }
-div#formm{
-    /* 
-	position: absolute;
-	text-align: left; 
-	top:350px;
-    left:437px;
-    list-style: none;
-	background-color: rgba(131, 229, 248, 0.5);
-	*/
-    
-}
+

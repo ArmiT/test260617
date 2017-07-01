@@ -1,11 +1,15 @@
 ﻿<html>
 <head>
 <title>Гостевая книга</title>
+
 	<link rel="stylesheet" type="text/css" href="css/styles.css">
+	<link rel="stylesheet" type="text/css" href="css/stylesHead.css">
 </head>
 <body>
 		<div id="header">
-			ГОСТЕВАЯ КНИГА: _НОВАЯ ЗАПИСЬ_
+			<div id="block1"><br></div>
+			<div id="block2">ГОСТЕВАЯ КНИГА: _НОВАЯ ЗАПИСЬ_</div>
+			<div id="block1"><div id="button"><a href="adminAt.php?back=index" title="Администратор"><img src="img/c.png" alt="Админ"></a></div></div>
 		</div>
 		<div id="main">
 		Чтобы добавить свою запись в гостевую книгу, заполните форму...
