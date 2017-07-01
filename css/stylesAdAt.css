@@ -1,39 +1,4 @@
-
-div#head
-{
-	font-size: 30px ;
-}
-div#std{
-	margin: 0px 0px 0px 0px;
-    width: 100%;
-    float:left;
-    position:relative;
-	font-size: 0px ;
-	background-color: rgba(131, 229, 248, 1);
-	padding: 1px 0px 3px 0px;
-}
-div#clmn{
-	font-size: 18px ;
-	margin: 0px 0px 0px 0px;
-    width: 20%;
-    float:left;
-    position:relative;
-	padding: 0px 1% 0px 19%;
-	text-align: left;
-    color: black;
-}
-div#clmn2{
-    color: grey;
-}
-div#clmnT{
-	margin: 0px 0px 0px 0px;
-    width: 50%;
-    float:right;
-    position:relative;
-	padding: 0px 10% 0px 0%;
-	text-align: left;
-}
-div#main
+﻿div#main
 {
     margin: 0px 0px 2px 0px;
     background-color: rgb(255, 255, 255);
@@ -45,4 +10,32 @@ div#main
     float:left;
     color: black;
 }
+div#clmn{
+    font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 20%;
+    float:left;
+    position:relative;
+    padding: 4px 1% 0px 19%;
+    text-align: right;
+}
+div#clmnT{
+    margin: 0px 0px 0px 0px;
+    width: 59%;
+    float:right;
+    position:relative;
+    padding: 4px 1% 0px 0%;
+    text-align: left;
+}
 
+div#alll
+{
+    text-align: center;
+	font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 98%;
+    float:left;
+    position:relative;
+    padding: 0px 1% 0px 1%;
+    color: black;
+}

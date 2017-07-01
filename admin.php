@@ -1,17 +1,19 @@
 ﻿<html>
 <head>
-<title>Гостевая книга</title>
-	<link rel="stylesheet" type="text/css" href="css/stylesCh.css">
+    <title>Гостевая книга</title>
+<link rel="stylesheet" type="text/css" href="css/stylesCh.css">
 	<link rel="stylesheet" type="text/css" href="css/stylesHead.css">
 </head>
 <body>
-	<div id="header">
-			<div id="block1"><br></div>
-			<div id="block2">ГОСТЕВАЯ КНИГА: _ВСЕ ЗАПИСИ_</div>
-			<div id="block1"><div id="button"><a href="adminAt.php?back=chat" title="Администратор"><img src="img/crown.png" alt="Админ"></a></div></div>
-	</div>
-	<!--<div id="message">-->
-		<?php
+<div id="header">
+    <div id="block1"><br></div>
+    <div id="block2"> _Страничка АДМИНИСТРАТОРА_</div>
+    <div id="block1"><div id="button">
+		<a href="chat.php" title="Назад"><img src="img/back.png" alt="Назад"></a>
+    </div></div>
+</div>
+		
+	<?php
 		require_once 'connection.php'; // подключаем скрипт
 
 		// подключаемся к серверу
@@ -25,10 +27,10 @@
 		//В любой непонятной ситуации выводи первую страницу
 		if ($page<1) $page=1; if(!is_numeric($page)) $page=1;
 		// !!!!!!!!!!!!!!!!!выполняем операции с базой данных
-		$sql = " SELECT * FROM people WHERE admission=1 ";
+		$sql = " SELECT * FROM people WHERE admission!=1";
 		$res = mysqli_query($link,$sql) or die(mysqli_error($link));
 
-		$quantity=10;
+		$quantity=5;
 		$num = mysqli_num_rows($res);
 		// Округляем до целого (Кол-во записей в БД/ Кол-во записей на странице)
 		$pages = ceil($num/$quantity);
@@ -39,15 +41,11 @@
 		// Текущая станица на черном фоне
 		echo '<div id="header"><div id="head"><strong>- '.$page.' -</strong><br><div style="color: #83E5F8;">(  '.$page.' из '.$pages.' )</div></div></div>';
 		
-		// Переменная $list указывает с какой записи начинать выводить данные.
-		// Если это число не определено, то будем выводить
-		// с самого начала, то-есть с нулевой записи
-
 		$list=0;
 		// Вывести $quantity записей на $page станицу, начиная с записи $list
 		$list=($page-1)*$quantity;
 
-		$res = mysqli_query($link,"SELECT * FROM people WHERE admission=1 LIMIT $quantity OFFSET $list;")or die(mysqli_error($link));
+		$res = mysqli_query($link,"SELECT * FROM people WHERE admission!=1 LIMIT $quantity OFFSET $list;")or die(mysqli_error($link));
 
 
 		// Выводим все записи текущей страницы
@@ -61,7 +59,13 @@
 					</div>
 					<div id=\"alll\">
 						<div id=\"clmn\"><div id=\"clmn2\">оставил(а) запись:</div></div>
-						<div id=\"clmnT\">".$result['message']."</div>
+						<div id=\"clmnT\">
+							<div id=\"dop\">".$result['message']."</div>
+							<div id=\"dop2\">
+								<div id=\"button\"><a href='delete.php?id=".$result['id']."&page=".$page."' title='Удалить'><img src=\"img/No.png\" alt=\"Назад\"></a>	
+								<a href='admission.php?id=".$result['id']."&page=".$page."' title='Одобрить'><img src=\"img/Yes.png\" alt=\"Назад\"></a></div>	
+							</div>
+						</div>
 					</div>
 				</div>"
 			;
@@ -94,37 +98,13 @@
 				echo '<a href=" '.$_SERVER['SCRIPT_NAME'].'?page='.($page+1).'"> |Вперед| </a> &nbsp;';
 				echo '<a href="' . $_SERVER['SCRIPT_NAME'] . '?page=' . ($pages) .'"> |В конец| </a> &nbsp;';
 			}
-			echo '</div>';
-				/*
-				while ($result = mysqli_fetch_array($res))
-				{
-					echo
-						"<div id=\"message\">
-
-							<div id=\"alll\">
-								<div id=\"all\">".$result['name']."</div>
-							</div>
-							<!--<div id=\"alll\">
-								<div id=\"clmn\">".$result['name']."</div>
-								<div id=\"clmnT\"></div>
-							</div>-->
-							<div id=\"alll\">
-								<div id=\"clmn\"><div id=\"clmn2\">оставил(а) запись:</div></div>
-								<div id=\"clmnT\">".$result['message']."</div>
-							</div>
-						</div>";
-				}
-				*/
+			echo '</div>';				
 		}
+
 		echo '<div id="sos">В любой непонятной ситуации нажми <a href=" '.$_SERVER['SCRIPT_NAME'].'?page='.$page.'"><strong> ОБНОВИТЬ </strong></a> </div>&nbsp;';
 		// закрываем подключение
 		mysqli_close($link);
-		?>
-	<!--</div>-->
-	<div id="main">
-		<br>
-		Чтобы добавить новую запись, нажмите...
-	</div>
-	<div id="header"><div id="head"><a href="index.php">Новая запись</a></div></div>
+	?>
+
 </body>
 </html>

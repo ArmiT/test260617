@@ -9,7 +9,7 @@
 		<div id="header">
 			<div id="block1"><br></div>
 			<div id="block2">ГОСТЕВАЯ КНИГА: _НОВАЯ ЗАПИСЬ_</div>
-			<div id="block1"><div id="button"><a href="adminAt.php?back=index" title="Администратор"><img src="img/c.png" alt="Админ"></a></div></div>
+			<div id="block1"><div id="button"><a href="adminAt.php?back=index" title="Администратор"><img src="img/crown.png" alt="Админ"></a></div></div>
 		</div>
 		<div id="main">
 		Чтобы добавить свою запись в гостевую книгу, заполните форму...
@@ -52,11 +52,12 @@
 				$login = "Не известно";
 				$email = "Не известно";
 				$message = "Не известно";
+				$admission = 0;
 				if(isset($_POST['login'])) $login =  $_POST['login'];
 				if (isset($_POST['email'])) $email =  $_POST['email'];
 				if (isset($_POST['message'])) $message =  $_POST['message'];
 				if (isset($_POST['message']) & isset($_POST['email'])& isset($_POST['login']))
-					$sql =  "INSERT INTO people (name,email,message) VALUES ('$login','$email','$message')";
+					$sql =  "INSERT INTO people (name,email,message,admission) VALUES ('$login','$email','$message','$admission')";
 				$sql = mysqli_query($link,$sql) or die(mysqli_error($link));
 				if ($sql) {
 					echo "$login";

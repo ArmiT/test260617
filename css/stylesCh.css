@@ -1,13 +1,4 @@
-div#std{
-	margin: 0px 0px 0px 0px;
-    width: 100%;
-    float:left;
-    position:relative;
-	font-size: 0px ;
-	background-color: rgba(131, 229, 248, 1);
-	padding: 1px 0px 3px 0px;
-}
-div#clmn{
+﻿div#clmn{
 	font-size: 18px ;
 	margin: 0px 0px 0px 0px;
     width: 20%;
@@ -17,21 +8,6 @@ div#clmn{
 	text-align: left;
     color: black;
 }
-div#clmn2{
-    color: grey;
-}
-div#main
-{
-    margin: 0px 0px 2px 0px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    position:relative;
-    padding: 1% 0% 1% 0% ;
-    font-size: 18px ;
-    width: 100%;
-    float:left;
-    color: black;
-}
 div#clmnT{
 	margin: 0px 0px 0px 0px;
     width: 50%;
@@ -39,6 +15,20 @@ div#clmnT{
     position:relative;
 	padding: 0px 10% 0px 0%;
 	text-align: left;
+}
+div#dop{
+    margin: 0px 0px 0px 0px;
+    width: 60%;
+    float:left;
+    position:relative;
+    text-align: left;
+}
+div#dop2{
+    margin: 0px 0px 0px 0px;
+    width: 40%;
+    float:right;
+    position:relative;
+    text-align: left;
 }
 div#head{
     color: #ffffff;
@@ -50,34 +40,13 @@ div#head a{
     color: #ffffff;
     text-decoration: none;
 }
-div#message
-{
-    margin: 0px 0px 2px 0px;
-    background-color: rgb(203, 240, 248);
-    padding: 1% 0% 1% 0% ;
-    text-align: center;
-    position:relative;
-    font-size: 18px ;
-    width: 100%;
-    float:left;
-    color: black;
-}
+
 div#alll
 {
     position:relative;
     width: 100%;
 }
-div#all
-{
-    font-size: 18px ;
-    margin: 0px 0px 0px 0px;
-    width: 80%;
-    float:left;
-    position:relative;
-    padding: 0px 1% 0px 19%;
-    text-align: left;
-    color: black;
-}
+
 
 div#sos
 {
