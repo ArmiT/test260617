@@ -1,20 +1,24 @@
-﻿<html>
-<head>
-<title>Гостевая книга</title>
-	<link rel="stylesheet" type="text/css" href="css/stylesCh.css">
-	<link rel="stylesheet" type="text/css" href="css/stylesHead.css">
-</head>
-<body>
-	<div id="header">
-			<div id="block1"><br></div>
-			<div id="block2">ГОСТЕВАЯ КНИГА: _Удаление записи_</div>
-			<div id="block1"><div id="button"><a href="adminAt.php?back=chat" title="Администратор"><img src="img/c.png" alt="Админ"></a></div></div>
-	</div>
-		<?php
-		if (isset($_GET['id'])) $id =   $_GET['id'];
-		echo $id;
-		if (isset($_GET['page'])) $page =   $_GET['page'];
-		echo $page;
-		?>
-</body>
-</html>
+﻿<?php
+if (isset($_GET['id'])&isset($_GET['page']))
+{
+	$id= $_GET['id'];
+	echo $id;
+	require_once 'connection.php'; // подключаем скрипт
+	// подключаемся к серверу
+	$link = mysqli_connect($host, $user, $password, $database)
+	or die("Ошибка " . mysqli_error($link));
+	$admission = 1;
+	$sql =  "DELETE FROM   people    WHERE id='$id'";
+	$sql = mysqli_query($link,$sql) or die(mysqli_error($link));
+	/*if ($sql) {
+        echo "$login";
+    } else {
+        echo "$login не";
+    }*/
+	// закрываем подключение
+	mysqli_close($link);
+	$page =   $_GET['page'];
+	echo $page;
+	echo "<meta http-equiv='refresh' content='0; url=admin.php?page=1'>";
+}
+?>

@@ -86,7 +86,7 @@ $passwordTrue  = "1234";
 								//неверный логин
 								echo "Неверный логин! Попробуйте снова!";
 							}*/
-							echo "<meta http-equiv='refresh' content='0; url=admin.php'>";
+							echo "<meta http-equiv='refresh' content='0; url=admin.php?page=1'>";
 						}
 					}
 				}
