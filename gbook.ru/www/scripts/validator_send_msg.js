@@ -12,7 +12,8 @@ $(document).ready(function() {
 
       email: {
         required: true,
-        email: true
+        email: true,
+        minlength: 6
       },
 
       msg: {
@@ -36,6 +37,10 @@ $(document).ready(function() {
 
             case "status:len":
               $("#res").text("Длина полей Имя и Сообщение не должна превышать 255 и 512 символов соответственно!");
+              break;
+
+            case "status:email":
+              $("#res").text("Введите корректный email адрес!");
               break;
 
             case "status:ok":
@@ -65,7 +70,8 @@ $(document).ready(function() {
 
       email: {
         required: "Это поле обязательно для заполнения",
-        email: "Введите корректный email адрес"
+        email: "Введите корректный email адрес",
+        minlength: "Длина email адреса должна быть не менее 6 символов"
       },
 
       msg: {

@@ -11,11 +11,13 @@
     </div>
     <div class="form-group">
       <label for="text">Сообщение</label>
-      <textarea id="mymsg" name="msg" type="text" class="form-control msg-area" placeholder="Введите текст сообщения"></textarea>
+      <textarea name="msg" type="text" class="form-control msg-area" placeholder="Введите текст сообщения"></textarea>
       <p class="help-block"><em>Примечание: перед публикацией ваше сообщение будет проверено администратором!</em></p>
     </div>
-    <button id="msgsend" name="msg_send" type="submit" class="btn btn-success btn-send">Отправить</button>
+    <button name="msg_send" type="submit" class="btn btn-success btn-send">Отправить</button>
     <br>
-    <h4><span id="res"></span></h4>
+    <div class="form-group has-error">
+      <h4><span style="color: red" id="res"></span></h4>
+    </div>
   </form>
 </div>

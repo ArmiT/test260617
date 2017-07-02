@@ -1,15 +1,20 @@
 <?php
 
-  $name = $_POST['username'];
-  $email = $_POST['email'];
-  $msg = $_POST['msg'];
+  $name = trim($_POST['username']);
+  $email = trim($_POST['email']);
+  $msg = trim($_POST['msg']);
 
-  if (!isset($name) || !isset($email) || !isset($msg)) {
+  if (empty($name) || empty($email) || empty($msg)) {
     echo "status:null";
     exit();
   }
 
-  if (strlen($name) > 255 || strlen($msg) > 512) {
+  if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    echo "status:email";
+    exit();
+  }
+
+  if (mb_strlen($name) > 255 || mb_strlen($msg) > 512) {
     echo "status:len";
     exit();
   }
