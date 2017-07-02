@@ -1,8 +1,7 @@
 <?php
 
   function get_pages_count($token) {
-    $query = "SELECT count(*) FROM messages WHERE state=1";
-    $result = mysqli_query($token, $query);
+    $result = mysqli_query($token, "SELECT count(*) FROM messages WHERE state=1");
 
     if (!$result) {
       die(mysqli_error($token));
