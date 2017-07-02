@@ -97,6 +97,11 @@ div#all
 div#clmn2{
     color: grey;
 }
+div#clmnT2{
+    color: grey;
+    text-align: right;
+    font-size: 14px ;
+}
 div#main img
 {
     width: 40%;

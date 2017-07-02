@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Хост: 127.0.0.1
--- Время создания: Июл 01 2017 г., 20:55
+-- Время создания: Июл 02 2017 г., 22:49
 -- Версия сервера: 5.5.25
 -- Версия PHP: 5.3.13
 
@@ -31,9 +31,10 @@ CREATE TABLE IF NOT EXISTS `people` (
   `name` varchar(255) NOT NULL,
   `email` varchar(30) NOT NULL,
   `message` text NOT NULL,
-  `admission` int(1) DEFAULT '0',
+  `admission` int(1) NOT NULL DEFAULT '0',
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
-) ENGINE=MyISAM  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=37 ;
+) ENGINE=MyISAM  DEFAULT CHARSET=cp1251 AUTO_INCREMENT=39 ;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;

@@ -18,14 +18,16 @@
 		<form  method="POST" enctype="multipart/form-data">
 			<div id="std">
 				<div id="clmn">Имя:</div>
-				<div id="clmnT"><input type='text' name='login' value=''></div>
+				<div id="clmnT"><input type='text' name='login' value='' placeholder="Введите свое имя" required pattern="^[а-яА-ЯёЁa-zA-Z0-9_.]{1,255}$" maxlength="255"></div>
 			</div>
 			<div id="std">
 				<div id="clmn">E-mail:</div>
-				<div id="clmnT"><input type='text' name='email' value=''></div>
+				<div id="clmnT"><input type='email' name='email' value='' placeholder="Введите свой e-mail" required maxlength="40"></div>//
 			</div>
 			<div id="std">
-				<div id="clmn">Сообщение:</div><div id="clmnT"><textarea name="message" rows="4" cols="55" wrap="virtual"></textarea></div>
+				<div id="clmn">Сообщение:</div><div id="clmnT"><textarea name="message" rows="4" cols="55" wrap="virtual" placeholder="Введите текст новой записи" required
+																		 maxlength="512"></textarea></div>
+
 			</div>
 			<div id="std">
 				<div id="clmn"></div><div id="clmnT"><INPUT type=SUBMIT VALUE=Отправить><INPUT type="reset" VALUE=Отменить></div>

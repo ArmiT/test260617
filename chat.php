@@ -18,10 +18,10 @@
 					if ($sort!=0&$sort!=1) $sort=0; if(!is_numeric($sort)) $sort=0;
 					if ($sort==1)
 					{//ASС
-						echo 'Сейчас: cначала старые<a href="sort.php?page=' . $page . '&sort=' . $sort . '&back=1" title="cначала новые"><img src="img/up_arrow.png" alt="Сначала старые"></a>';}
+						echo 'Сейчас: cначала новые<a href="sort.php?page=' . $page . '&sort=' . $sort . '&back=1" title="cначала стырае"><img src="img/up_arrow.png" alt="Сначала новые"></a>';}
 					else
 					{//DESC
-						echo 'Сейчас cначала новые<a href="sort.php?page='.$page.'&sort='.$sort.'&back=1" title="cначала старые"><img src="img/down_arrow.png" alt="Сначала новые"></a>';}
+						echo 'Сейчас cначала старые<a href="sort.php?page='.$page.'&sort='.$sort.'&back=1" title="cначала новые"><img src="img/down_arrow.png" alt="Сначала старые"></a>';}
 				?>
 			</div>
 		</div>
@@ -76,11 +76,15 @@
 						<div id=\"all\">".$result['name']."</div>
 					</div>
 					<div id=\"alll\">
-						<div id=\"clmn\"><div id=\"clmn2\">оставил(а) запись:</div></div>
-						<div id=\"clmnT\">".$result['message']."</div>
+						<div id=\"clmn\">
+							<div id=\"clmn2\">оставил(а) запись:</div>
+						</div>
+						<div id=\"clmnT\">".$result['message']."<br>
+							<div id=\"clmnT2\">".$result['date']."<br></div>
+						</div>
+						
 					</div>
-				</div>"
-			;
+				</div>";
 		}
 
 		if ($pages>1)

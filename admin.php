@@ -15,10 +15,10 @@
 			require_once 'link.php'; //$_GET['page'] & $_GET['sort']
 			if ($sort==1)
 			{//ASС
-				echo 'Сейчас: cначала старые<a href="sort.php?page=' . $page . '&sort=' . $sort . '&back=0" title="cначала новые"><img src="img/up_arrow.png" alt="Сначала старые"></a>';}
+				echo 'Сейчас: cначала новые<a href="sort.php?page=' . $page . '&sort=' . $sort . '&back=0" title="cначала старые"><img src="img/up_arrow.png" alt="Сначала новые"></a>';}
 			else
 			{//DESC
-				echo 'Сейчас cначала новые<a href="sort.php?page='.$page.'&sort='.$sort.'&back=0" title="cначала старые"><img src="img/down_arrow.png" alt="Сначала новые"></a>';}
+				echo 'Сейчас: cначала старые<a href="sort.php?page='.$page.'&sort='.$sort.'&back=0" title="cначала новые"><img src="img/down_arrow.png" alt="Сначала старые"></a>';}
 			?>
     	</div>
 	</div>
@@ -76,7 +76,9 @@
 					<div id=\"alll\">
 						<div id=\"clmn\"><div id=\"clmn2\">оставил(а) запись:</div></div>
 						<div id=\"clmnT\">
-							<div id=\"dop\">".$result['message']."</div>
+							<div id=\"dop\">".$result['message']."<br>
+								<div id=\"clmnT2\">".$result['date']."<br></div>
+							</div>
 							<div id=\"dop2\">
 								<div id=\"button\"><a href='delete.php?id=".$result['id']."&page=".$page."&sort=".$sort."' title='Удалить'><img src=\"img/No.png\" alt=\"Назад\"></a>	
 								<a href='admission.php?id=".$result['id']."&page=".$page."&sort=".$sort."' title='Одобрить'><img src=\"img/Yes.png\" alt=\"Назад\"></a></div>	

@@ -33,11 +33,11 @@ $passwordTrue  = "1234";
 		<form  method="POST" enctype="multipart/form-data">
 			<div id="std">
 				<div id="clmn">Логин:</div>
-				<div id="clmnT"><input type='text' name='login' value=""></div>
+				<div id="clmnT"><input type='text' name='login' value="" placeholder="администратора" required pattern="^[а-яА-ЯёЁa-zA-Z0-9_.]{1,255}$" maxlength="255"></div>
 			</div>
 			<div id="std">
 				<div id="clmn">Пароль:</div>
-				<div id="clmnT"><input type='text' name='password' value=""></div>
+				<div id="clmnT"><input type='text' name='password' value="" placeholder="администратора" required maxlength="255"></div>
 			</div>
 			<div id="std">
 				<div id="clmn"></div>
