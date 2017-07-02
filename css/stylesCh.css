@@ -30,24 +30,11 @@ div#dop2{
     position:relative;
     text-align: left;
 }
-div#head{
-    color: #ffffff;
-    font-size: 18px ;
-}
-
-div#head a{
-    list-style: none;
-    color: #ffffff;
-    text-decoration: none;
-}
-
 div#alll
 {
     position:relative;
     width: 100%;
 }
-
-
 div#sos
 {
     margin: 0px 0px 2px 0px;
@@ -55,12 +42,11 @@ div#sos
     text-align: center;
     position:relative;
     padding: 1%;
-    font-size: 18px ;
+    font-size: 20px ;
     width: 98%;
     float:left;
     color: grey;
 }
-
 div#sos a
 {
     list-style: none;

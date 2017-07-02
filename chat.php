@@ -122,9 +122,8 @@
 		?>
 	<!--</div>-->
 	<div id="main">
-		<br>
 		Чтобы добавить новую запись, нажмите...
 	</div>
-	<div id="header"><div id="head"><a href="index.php">Новая запись</a></div></div>
+	<div id="header"><div id="head"><a href="index.php">новая запись</a></div></div>
 </body>
 </html>

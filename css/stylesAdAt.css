@@ -1,15 +1,4 @@
-﻿div#main
-{
-    margin: 0px 0px 2px 0px;
-    background-color: rgb(255, 255, 255);
-    text-align: center;
-    position:relative;
-    padding: 1% 0% 1% 0% ;
-    font-size: 18px ;
-    width: 100%;
-    float:left;
-    color: black;
-}
+﻿
 div#clmn{
     font-size: 18px ;
     margin: 0px 0px 0px 0px;
