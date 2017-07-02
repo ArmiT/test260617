@@ -17,7 +17,12 @@ $passwordTrue  = "1234";
 			<?php
 			if (isset($_GET['back'])) $back =   $_GET['back'];
 			if ($back=="" ) $back="index"; 
-			if ($back=="index" | $back=="chat" )echo '<a href="'.$back.'.php" title="Назад"><img src="img/back.png" alt="Назад"></a>';
+			if ($back=="index")echo '<a href="'.$back.'.php" title="Назад"><img src="img/back.png" alt="Назад"></a>';
+			if ($back=="chat")
+			{
+				require_once 'link.php'; //$_GET['page'] & $_GET['sort']
+				echo '<a href="'.$back.'.php?page='.$page.'&sort='.$sort.'" title="Назад"><img src="img/back.png" alt="Назад"></a>';
+			}
 			?>
 		</div></div>		
 	</div>
@@ -86,7 +91,7 @@ $passwordTrue  = "1234";
 								//неверный логин
 								echo "Неверный логин! Попробуйте снова!";
 							}*/
-							echo "<meta http-equiv='refresh' content='0; url=admin.php?page=1'>";
+							echo "<meta http-equiv='refresh' content='0; url=admin.php?page=1&sort=0'>";
 						}
 					}
 				}

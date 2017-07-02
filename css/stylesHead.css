@@ -30,24 +30,22 @@ div#block1
 div#block2
 { 
     width: 60%;
-
     margin: 0px 0px 0px 0px;
     padding: 0px 0% 0px 0%;
     float: left;;
 }
 div#button{ 
-    width: 40%;
+    width: 90%;
     float:right;
     position:relative;
-    padding:  0px 5% 0px 55%;
-    text-align: center;
-    //border-radius: 5px;
-    color: black;
-    font-size: 20px ;
+   // background-color: rgb(173, 0, 46);
+    padding:  0px 5% 0px 5%;
+    text-align: left;
+    font-size: 18px ;
+    color: white;
 }
 div#button img { 
     border-radius: 5px;
-   // background-color: rgba(248, 255, 143, 1);
     width: 45px;
     float:right;
     border:none;

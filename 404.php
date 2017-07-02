@@ -18,7 +18,7 @@
         Без паники! У нас есть еще пару существующих страниц.:) </br>
         Возможно, вас заинтересуют:
     </div>
-    <div id="header"><div id="head"><a href="chat.php?page=1">записи в гостевой книге</a></div></div>
+    <div id="header"><div id="head"><a href="chat.php?page=1&sort=0">записи в гостевой книге</a></div></div>
     <div id="main">
         Или вы хотите оставить в ней свою.
     </div>

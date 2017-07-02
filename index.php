@@ -93,11 +93,9 @@
 		<div id="main">
 			Чтобы посмотреть другие записи, нажмите...
 		</div>
-		<!--<form action="chat.php?page=1" method="POST" enctype="multipart/form-data">
-			<div id="std">
-				<div id="clmn"></div><div id="clmnT"><INPUT type=SUBMIT  VALUE="Посмотреть записи"</div>
-			</div>
-		</form>-->
-		<div id="header"><div id="head"><a href="chat.php?page=1">Посмотреть записи</a></div></div>
+		<?php
+		require_once 'link.php'; //$_GET['page'] & $_GET['sort']
+		echo '<div id="header"><div id="head"><a href="chat.php?page='.$page.'&sort='.$sort.'">все записи</a></div></div>';
+		?>
 </body>
 </html>
