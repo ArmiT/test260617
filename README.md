@@ -40,24 +40,17 @@
 
 ## Сборка проекта (Gulp)
 Для сборки используется Gulp. Плагины:
-- gulp-minify-html (сжатие HTML)
-- gulp-concat (склейка файлов)
-- gulp-uglify (сжатие JS)
-- gulp-sass (SASS)
+- [gulp-htmlmin](https://github.com/jonschlinkert/gulp-htmlmin) (сжатие HTML)
+- [gulp-concat](https://www.npmjs.com/package/gulp-concat) (склейка файлов)
+- [gulp-uglify](https://www.npmjs.com/package/gulp-uglify) (сжатие JS)
+- [gulp-sass](https://www.npmjs.com/package/gulp-sass) (SASS)
 
 Файлы страниц публичной части и администрирования собираются соединением файлов header.html, тела страницы и footer.html. Файлы скриптов для каждой части - соединение общей функциональности (shared.js) и скриптов части (admin.js или public.js). Таблицы стилей создаются аналогично.
 
-Перед сборкой в папку *_src/php* требуется вложить файл *db_conf.dsf* с данными для подключения к БД, имеющий следующий вид:
-```
-<?php
-$host = "localhost";        // Адрес MySQL Server
-$user = "username";         // Имя пользователя БД
-$pass = "password";         // Пароль
-$dbname = "twins_practice"; // Выбор схемы БД
-?>
-```
-
 #### После сборки корень проекта находится в папке *build*.
+
+## Настройка
+В корне проекта *(папка build)* находится файл конфигурации *config.default.php*. Требуется создать локальную копию с именем *config.php* и заполнить необходимые поля.
 
 ## Тестирование
 Проект можно протестировать по следующим ссылкам:

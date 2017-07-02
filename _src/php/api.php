@@ -6,7 +6,11 @@ $encoding = "UTF-8";
 
 # Return data or error information.
 function feedback($arr){
-    die(json_encode($arr));
+    global $config;
+    
+    # Output JSON and terminate script
+    echo json_encode($arr);
+    exit;
 }
 
 # Template to simplify error return.
@@ -17,15 +21,15 @@ function intError($error, $text){
     ));
 }
 
-# Including file with database connection settings (login, psw).
-# Should be excluded from project view when using version control system.
-require_once "db_conf.dsf";
+# Checking configuration.
+$config = include "config.php";
+
+if (!$config){
+    $config = require "config.default.php";
+}
 
 # Connecting to database.
-$mysql = mysqli_connect($host,$user,$pass,$dbname);
-if (mysqli_connect_errno()){
-    intError(1, 'Database connection error');
-}
+$mysql = mysqli_connect($config['db']['host'], $config['db']['user'], $config['db']['psw'], $config['db']['scheme']) or intError(1, 'Database connection error');
 
 # Routing request.
 $requestString = $_POST['request'];
@@ -33,7 +37,7 @@ switch($requestString){
     # Update msg list
     case 'public-update':
         # Fetching all approved posts
-        if ($result = $mysql->query("
+        $result = $mysql->query("
             SELECT 
                 `comments`.`msg` as `msg`, 
                 `users`.`name` as `author`, 
@@ -42,15 +46,14 @@ switch($requestString){
             FROM `users` INNER JOIN `comments` ON `users`.`id` = `comments`.`users_id`
             WHERE `comments`.`approved` = TRUE
             ORDER BY `comments`.`timestamp` DESC
-        ")){
-            feedback(array(
-                'error' => 0,
-                'data' => $result->fetch_all(MYSQLI_ASSOC),
-                'timestamp' => time()
-            ));
-        } else {
-            intError(1, 'Database error: '.$mysql->error);
-        }
+            ") 
+            or intError(1, 'Database error: '.$mysql->error);
+        
+        feedback(array(
+            'error' => 0,
+            'data' => $result->fetch_all(MYSQLI_ASSOC),
+            'timestamp' => time()
+        ));
         break;
     # New comment
     case 'public-comment':
@@ -59,37 +62,37 @@ switch($requestString){
         $mail = $_POST['email'];
         $msg = $_POST['text'];
         
-        if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9\s]+$/', $name)) {
-            $error = 1;
-            $text = 'Неккоретные символы в имени';
+        if ($config['dataVal']){
+            if (!preg_match('/^[a-zA-Zа-яА-ЯёЁ0-9\s]+$/', $name)) {
+                $error = 1;
+                $text = 'Неккоретные символы в имени';
+            }
+            $len = mb_strlen($name, $encoding);
+            if ($len > 255 || $len < 3){
+                $error = 2;
+                $text = 'Длина имени находится вне диапазона 3-255';
+            }
+            if (!preg_match('/^[\w.]+@\w+\.\w+$/', $mail)){
+                $error = 3;
+                $text = 'Неккоретный формат почтового адреса';
+            }
+            $len = mb_strlen($msg, $encoding);
+            if ($len > 512 || $len < 4) {
+                $error = 4;
+                $text = 'Длина сообщения находится вне диапазона 4-512';
+            }
+
+            # Feedback.
+            if ($error > 0){
+                feedback(array(
+                    'error' => 100 + $error,
+                    'text' => $text
+                ));
+            }
         }
-        $len = mb_strlen($name, $encoding);
-        if ($len > 255 || $len < 3){
-            $error = 2;
-            $text = 'Длина имени находится вне диапазона 3-255';
-        }
-        if (!preg_match('/^[\w.]+@\w+\.\w+$/', $mail)){
-            $error = 3;
-            $text = 'Неккоретный формат почтового адреса';
-        }
-        $len = mb_strlen($msg, $encoding);
-        if ($len > 512 || $len < 4) {
-            $error = 4;
-            $text = 'Длина сообщения находится вне диапазона 4-512';
-        }
-        
-        # Feedback.
-        if ($error > 0){
-            feedback(array(
-                'error' => 100 + $error,
-                'text' => $text
-            ));
-        }
-        
         # Adding data.
         # Adding user if not exists.
-        $result = $mysql->query("SELECT `id` FROM `users` WHERE `mail` LIKE '$mail'");
-        if (!$result)intError(2, 'Database error: '.$mysql->error);
+        $result = $mysql->query("SELECT `id` FROM `users` WHERE `mail` LIKE '$mail'") or intError(2, 'Database error: '.$mysql->error);
         if ($row = $result->fetch_row()){
             // user exists - taking id
             $userId = $row[0];
@@ -113,7 +116,7 @@ switch($requestString){
     # Update list
     case 'admin-update':
         # Fetching all posts
-        if ($result = $mysql->query("
+        $result = $mysql->query("
             SELECT
                 `comments`.`id` as `comment_id`,
                 `comments`.`msg` as `msg`, 
@@ -123,15 +126,14 @@ switch($requestString){
             FROM `users` INNER JOIN `comments` ON `users`.`id` = `comments`.`users_id`
             WHERE `comments`.`approved` = FALSE
             ORDER BY `comments`.`timestamp` ASC
-        ")){
-            feedback(array(
-                'error' => 0,
-                'data' => $result->fetch_all(MYSQLI_ASSOC),
-                'timestamp' => time()
-            ));
-        } else {
-            intError(5, 'Database error: '.$mysql->error);
-        }
+            ")
+            or intError(5, 'Database error: '.$mysql->error); 
+        
+        feedback(array(
+            'error' => 0,
+            'data' => $result->fetch_all(MYSQLI_ASSOC),
+            'timestamp' => time()
+        ));
         break;
     # Discard comment
     case 'admin-delete':

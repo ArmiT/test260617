@@ -1,2 +1,1 @@
 ErrorDocument 404 /html/errors/404.html
-RedirectMatch 404 \.dsf$
