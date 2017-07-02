@@ -1,0 +1,10 @@
+// Padding for navbar
+body { 
+    padding-top: 70px; 
+    padding-right: 0px !important;
+}
+
+// Workaround for removing scrollbar effect on layout
+html {
+    overflow-y: scroll;
+}
