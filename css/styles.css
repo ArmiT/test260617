@@ -1,0 +1,60 @@
+﻿div#clmn{
+	font-size: 18px ;
+	margin: 0px 0px 0px 0px;
+    width: 20%;
+    float:left;
+    position:relative;
+	padding: 4px 1% 0px 19%;
+	text-align: right;
+}
+div#clmnT{
+	margin: 0px 0px 0px 0px;
+    width: 59%;
+    float:right;
+    position:relative;
+	padding: 4px 1% 0px 0%; 
+	text-align: left;
+}
+div#alll
+{
+    position:relative;
+    width: 100%;
+}
+div#message
+{
+    margin: 0px 0px 2px 0px;
+    background-color: rgb(203, 240, 248);
+    padding: 1% 0% 1% 0% ;
+    text-align: center;
+    position:relative;
+    font-size: 18px ;
+    width: 100%;
+    float:left;
+    color: black;
+}
+div#clmn2{
+    color: grey;
+}
+
+
+div#cclmn{
+    font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 20%;
+    float:left;
+    position:relative;
+    padding: 0px 1% 0px 19%;
+    text-align: left;
+    color: black;
+}
+div#cclmn2{
+    color: grey;
+}
+div#cclmnT{
+    margin: 0px 0px 0px 0px;
+    width: 50%;
+    float:right;
+    position:relative;
+    padding: 0px 10% 0px 0%;
+    text-align: left;
+}

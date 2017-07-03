@@ -1,0 +1,132 @@
+﻿body{
+	//font-family:T;
+    margin: 0px;
+    padding:0px;
+    background-color: rgb(255, 255, 255);
+	width: 100%;
+
+}
+div#header
+{
+	margin: 0px 0px 2px 0px;
+	background-color: rgb(0, 0, 0);
+    text-align: center;
+    position:relative;
+	padding: 1%;
+	font-size: 40px ;
+    width: 98%;
+	float:left;
+    color: white;
+}
+
+div#block1 
+{ 
+    width: 20%;
+   // background-color: rgb(173, 0, 46);
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0% 0px 0%;
+    float: left;;
+}
+div#block2
+{ 
+    width: 60%;
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0% 0px 0%;
+    float: left;;
+}
+div#button{ 
+    width: 90%;
+    float:right;
+    position:relative;
+   // background-color: rgb(173, 0, 46);
+    padding:  0px 5% 0px 5%;
+    text-align: left;
+    font-size: 18px ;
+    color: white;
+}
+div#button img { 
+    border-radius: 5px;
+    width: 45px;
+    float:right;
+    border:none;
+}
+div#main
+{
+    margin: 0px 0px 2px 0px;
+    background-color: rgb(255, 255, 255);
+    text-align: center;
+    position:relative;
+    padding: 1% 0% 1% 0% ;
+    font-size: 20px ;
+    width: 100%;
+    float:left;
+    color: black;
+}
+div#std{
+    margin: 0px 0px 0px 0px;
+    width: 100%;
+    float:left;
+    position:relative;
+    font-size: 0px ;
+    background-color: rgba(131, 229, 248, 1);
+    padding: 1px 0px 3px 0px;
+}
+div#message
+{
+    margin: 0px 0px 2px 0px;
+    background-color: rgb(203, 240, 248);
+    padding: 1% 0% 1% 0% ;
+    text-align: center;
+    position:relative;
+    font-size: 18px ;
+    width: 100%;
+    float:left;
+    color: black;
+}
+div#all
+{
+    font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 80%;
+    float:left;
+    position:relative;
+    padding: 0px 1% 0px 19%;
+    text-align: left;
+    color: black;
+}
+div#clmn2{
+    color: grey;
+}
+div#clmnT2{
+    color: grey;
+    text-align: right;
+    font-size: 14px ;
+}
+div#main img
+{
+    width: 40%;
+    padding: 0% 30% 0% 30%;
+}
+div#block3
+{
+    width: 50%;
+    background-color: rgb(173, 0, 46);
+    margin: 0px 0px 0px 0px;
+    padding: 0px 0% 0px 0%;
+    float: left;;
+}
+div#head{
+    color: #ffffff;
+    font-size: 20px ;
+
+}
+div#head a{
+    list-style: none;
+    color: #ffffff;
+    text-decoration: none;
+
+}
+div#head a:hover {
+    //font-size: 24px ;
+    color: rgb(131, 229, 248);
+}

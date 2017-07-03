@@ -1,0 +1,30 @@
+﻿
+div#clmn{
+    font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 20%;
+    float:left;
+    position:relative;
+    padding: 4px 1% 0px 19%;
+    text-align: right;
+}
+div#clmnT{
+    margin: 0px 0px 0px 0px;
+    width: 59%;
+    float:right;
+    position:relative;
+    padding: 4px 1% 0px 0%;
+    text-align: left;
+}
+
+div#alll
+{
+    text-align: center;
+	font-size: 18px ;
+    margin: 0px 0px 0px 0px;
+    width: 98%;
+    float:left;
+    position:relative;
+    padding: 0px 1% 0px 1%;
+    color: black;
+}
