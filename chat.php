@@ -44,7 +44,7 @@
 		$sql = " SELECT * FROM people WHERE admission=1 ";
 		$res = mysqli_query($link,$sql) or die(mysqli_error($link));
 
-		$quantity=5;
+		$quantity=10;
 		$num = mysqli_num_rows($res);
 		// Округляем до целого (Кол-во записей в БД/ Кол-во записей на странице)
 		$pages = ceil($num/$quantity);
