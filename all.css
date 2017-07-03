@@ -1,0 +1,187 @@
+body { 
+	font: 14px 'Times New Roman';
+	margin: 0;
+	background-color: #f5f0a5;
+}
+
+a {
+	color: #000;
+	text-decoration: none;
+}
+
+a.text {
+	color: #666;
+	text-decoration: none;
+}
+
+a.text:hover {
+	color: #bb9e0c;
+	text-decoration: underline;
+}
+
+div.column-center {
+	width: 980px;
+	min-height: 400px;
+	margin: auto;
+	margin-top: 20px;
+	background-color: #fff;
+	box-shadow: 0px 0px 5px rgba(0,0,0,0.3);
+	border: 1px solid #a79d00;
+	padding: 7px;
+	text-align: justify;
+}
+
+div.clear {
+	clear: both;
+}
+
+div.line {
+	border-top: 1px solid #e4e4e4;
+}
+
+span.bold {
+	font-weight: bold;
+}
+
+h1 {
+	color: #bb8000;
+	font-size: 25px;
+	text-align: center;
+}
+
+ol {
+	margin: 0;
+}
+
+ul {
+	margin: 0;
+}
+
+table {
+	border-spacing: 0px;
+}
+
+div.messang div.author {
+	width: 200px;
+	padding: 5px;
+	margin-right: 7px;
+	overflow: hidden;
+	float: left;
+	background-color: #fff8dd;
+}
+
+div.messang p {
+	margin: 15px 7px 15px 230px;
+	color: #666;
+	line-height: 1.4;
+}
+
+div.line {
+	margin: 15px 20px 15px 20px;
+}
+
+div.pages {
+	height: 40px;
+	text-align: center;
+}
+
+div.pages div.all {
+	border: 1px solid #ccc;
+	width: 25px;
+	height: 20px;
+	padding-top: 6px;
+	float: left;
+	margin: 5px;
+	border-radius: 4px;
+}
+
+div.pages div.class1:hover {
+	background-color: #fef3cb;
+	border: 1px solid #ffe04d;
+}
+
+div.pages div.class2 {
+	border: 1px solid #f4db89;
+	background-color: #ffe04d;
+}
+
+div.pages div.class3 {
+	border: 1px solid #fff;
+	margin: 0px;
+}
+
+input.text {
+	border: 1px solid #ddb52c;
+	border-radius: 5px;
+	width: 300px;
+	height: 25px;
+	padding: 5px;
+}
+
+textarea.text {
+	border: 1px solid #ddb52c;
+	border-radius: 5px;
+	width: 367px;
+	height: 120px;
+	padding: 5px;
+}
+
+input.go {
+	border: 1px solid #ddb52c;
+	background-color: #ffe04d;
+	border-radius: 5px;
+	width: 100px;
+	height: 35px;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+}
+
+td.one {
+	width: 60px;
+}
+
+td.two {
+	width: 350px;
+}
+
+div.new_mess {
+	background-color: #fff8dd;
+	padding: 10px;
+	position: relative;
+}
+
+div.new_mess h2 {
+	background-color: #ffe04d;
+	color: black;
+	font-size: 16px;
+	font-weight: bold;
+	padding: 7px;
+}
+
+div.dop_info {
+	position: absolute;
+	left: 520px;
+	top: 65px;
+	width: 420px;
+}
+
+div.null_mess {
+	padding: 150px 0 150px 0;
+	color: #ccc;
+	text-align: center;
+	font-size: 18px;
+}
+
+a.button {
+	display: block;
+	border: 1px solid #ddb52c;
+	background-color: #ffe04d;
+	border-radius: 5px;
+	width: 100px;
+	height: 15px;
+	padding: 5px;
+	margin-top: 5px;
+	cursor: pointer;
+	text-align: center;
+}
