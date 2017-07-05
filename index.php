@@ -1,129 +1,115 @@
-<?php
-	header ("Content-Type: text/html; charset=utf-8");
-	header ("Cache-control: no-cache");	
-	
-	include ("dbconnect.php");
-?>
-
+<!DOCTYPE html>
 <html>
-<head>
-<script type="text/javascript" src="jquery.js"></script>
-</head>
+  <head>
+    <meta charset="utf8">
+      <title>Гостевая книга</title>
+      <link rel="stylesheet" href="css/bootstrap.min.css">
+      <link rel="stylesheet" href="styles.css">
+      <link href="https://fonts.googleapis.com/css?family=Kurale" rel="stylesheet">
+  </head>
+  <body>
+      <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+<?php
 
-<body>
+include_once "config.php";
+include "database.php";
+        
 
-<h1>Гостевая книга</h1>
+// Определние общего числа отзывов
+$r1 = mysqli_query($link1, "SELECT count(*) as recs FROM book WHERE flag = 1");
+$row = mysqli_fetch_array($r1, MYSQLI_BOTH);
+$rec = $row[0];  // Общее кол-во записей в таблице
 	
-<div id="messages">
-</div>
 	
-<br>
-<h3>Добавить сообщение</h3>
-<!-- форма отправки сообщения -->
+// Кол-во записей на странице
+$N = 10; 
 
-<!-- проверка заполнения формы -->
-<script>
+echo "<div class=\"page-header\">
+        <h1 align = center> Гостевая книга</h1>
+      </div>";
 
-</script>
+/* Если перменная p (номер страницы) не указана,
+то выводится первая страница. */
+if (!isset($_GET['p'])) $p=0;
+else $p = $_GET['p'];
 
-<!-- код формы -->
-<form id="myForm">
-<table border="0">
-	<tr>
-		<td width="160">
-			Имя пользователя:
-		</td>
-		<td>
-			<input id="username" name="username" style="width: 300px;">
-		</td>
-	</tr>
-	<tr>
-		<td width="160" valign="top">
-			Сообщение:
-		</td>
-		<td>
-			<textarea id="msg" name="msg" style="width: 300px;"></textarea>
-		</td>
-	</tr>		
-	<tr>
-		<td width="160">
-			&nbsp;
-		</td>
-		<td>
-			<input id="btn" type="submit" value="Отправить сообщение">
-		</td>
-	</tr>
-</table>
-</form>
-
-<script>
-
-	function splash()
-	{
-		if (document.myForm.username.value  =='')
-			{
-				alert ("Заполните имя пользователя!");
-				return false;	
-			}
-			
-		if (document.myForm.msg.value  =='')
-			{
-				alert ("Заполните текст сообщения!");
-				return false;	
-			}
+//Записи для вывода
+$records = $p * $N;
 		
-		return true;   
-	}
+// SQL-запрос
+$q="SELECT * FROM book WHERE flag=1 ORDER BY id DESC LIMIT ".$records.", $N";	
+$r = mysqli_query($link1, $q);
+$n = mysqli_num_rows($r);
 
-	// загрузка сообщений из БД в контейнер messages
-	function show_messages()
-	{
-		$.ajax({
-			url: "show.php",
-			cache: false,
-			success: function(html){
-				$("#messages").html(html);
-			}
-		});
-	}
+// Форма ввода сообщения
+echo '<h3 align = center>Оставьте свой отзыв</h3>';
+	
+	 
+echo '<p>
+   <form class="col-md-6 col-md-offset-3 form-horizontal ramka" role="form" name=Main action=add.php method=post>
+     <div class="form-group">
+	   <label class="col-sm-2 control-label">Ваше имя:</label> 
+       <div class="col-sm-10">
+         <input type="text" class="form-control" maxlength="255" placeholder="Введите имя" name=uname>
+       </div>
+     </div>
+     <div class="form-group">
+	   <label class="col-sm-2 control-label">E-mail:</label> 
+       <div class="col-sm-10">
+         <input type="email" class="form-control" placeholder="Ваш e-mail" name=uemail>
+       </div>
+     </div>
+     <div class="form-group">
+         <label class="col-sm-2 control-label">Отзыв:</label> 
+         <div class="col-sm-10">
+	       <textarea class="form-control" rows="4" maxlength="512" placeholder="Напишите ваш отзыв здесь!" name=ucomment></textarea>
+       </div>
+     </div>
+     <div class="form-group">
+       <div class="col-sm-offset-2 col-sm-10">
+	     <button type="submit" class="btn btn-primary btn-lg">Отправить</button>
+       </div>
+       </br>
+   </form>
+   </p>
+   </br>';
+      
+// Вывод записей
+for($i=0; $i<$n; $i++)
+{
+	$row = mysqli_fetch_array($r, MYSQLI_BOTH);
+	$username = $row['name'];
+    $uemail = $row['email'];
 		
-	$(document).ready(function(){
-
-		show_messages();
+	echo "<p><table class=\"table table-striped\" width=100%>
+	      <tr><td bgcolor=#D3D3D3 width=20%>
+		  <font name=Tahoma size=2> $username <br> $uemail <br> $row[dt]</font></td>";
+	
+	echo "<td colspan=2 >
+	      <font name=Tahoma size=2> $row[comment] </td>
+		  </tr></table></p>";	
+}
 		
-		// контроль и отправка данных на сервер в фоновом режиме при нажатии на кнопку "отправить сообщение"
-		$("#myForm").submit(function(){
-		
-			var name = $("#username").val();
-			var msg  = $("#msg").val();
-			if (name =='')
-			{
-				alert ("Заполните имя пользователя!");
-				return false;
-			}
-			if (msg =='')
-			{
-				alert ("Заполните текст сообщения!");
-				return false;
-			}
+    
+// Навигация по записям
+if ($p > 0)
+{
+	$pn = $p -1;
+	  echo "<ul class=\"pager\"><li><a href=index.php?p=$pn>&larr; Назад</a></li></ul>";
+}
+    
+$p++;
+	
+if ($records + $N < $rec) 
+	echo "<ul class=\"pager\"><li><a class=\"pager\" href=index.php?p=$p>Далее &rarr;</a></li></ul>";
+	
+echo "
+<p align=center>
+    <a align=center href=admin.php?a=temp>Панель администрирования</a>
+</p>";    
 
-			$.ajax({
-				type: "POST",
-				url: "action.php",
-				data: "username="+name+"&msg="+msg+"&action=add",
-				success: function(msg){
-					show_messages();
-			   }
-			});
-            $("#username").val() = "";  
-            $("#msg").val() = "";
-			return false;
-		});
-
-	});
-
-</script>	
-
-
-</body>
+    
+?>	
+  </body>
 </html>
