@@ -1,18 +1,18 @@
-<?php
+ï»¿<?php
 /**
-* Íàñòðîéêè
+* ÐÐ°ÑÑ‚Ñ€Ð¾Ð¹ÐºÐ¸
 */
 
-// îáùèå êîíñòàíòû
-define('PATH', '/gb/'); // ïóòü ê ãîñòåâîé êíèãå
-define('RECSPERPAGE', 10); // êîëè÷åñòâî çàïèñåé íà îäíîé ñòðàíèöå
-define('ADMIN_EMAIL', 'admin@mail.ru'); // email àäìèíèñòðàòîðà
-define('ERROR_LOG_FILE', 'logs/error.log'); // ôàéë ëîãà îøèáîê
+// Ð¾Ð±Ñ‰Ð¸Ðµ ÐºÐ¾Ð½ÑÑ‚Ð°Ð½Ñ‚Ñ‹
+define('PATH', '/gb/'); // Ð¿ÑƒÑ‚ÑŒ Ðº Ð³Ð¾ÑÑ‚ÐµÐ²Ð¾Ð¹ ÐºÐ½Ð¸Ð³Ðµ
+define('RECSPERPAGE', 10); // ÐºÐ¾Ð»Ð¸Ñ‡ÐµÑÑ‚Ð²Ð¾ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹ Ð½Ð° Ð¾Ð´Ð½Ð¾Ð¹ ÑÑ‚Ñ€Ð°Ð½Ð¸Ñ†Ðµ
+define('ADMIN_EMAIL', 'admin@mail.ru'); // email Ð°Ð´Ð¼Ð¸Ð½Ð¸ÑÑ‚Ñ€Ð°Ñ‚Ð¾Ñ€Ð°
+define('ERROR_LOG_FILE', 'logs/error.log'); // Ñ„Ð°Ð¹Ð» Ð»Ð¾Ð³Ð° Ð¾ÑˆÐ¸Ð±Ð¾Ðº
 
-// Ïàðàìåòðû ÁÄ
-define('DBHOST', 'localhost'); // èìÿ õîñòà
-define('DBUSER', 'root'); // èìÿ ïîëüçîâàòåëÿ
-define('DBPASSWD', ''); // ïàðîëü
-define('DBNAME', 'test'); // èìÿ áàçû äàííûõ
+// ÐŸÐ°Ñ€Ð°Ð¼ÐµÑ‚Ñ€Ñ‹ Ð‘Ð”
+define('DBHOST', 'localhost'); // Ð¸Ð¼Ñ Ñ…Ð¾ÑÑ‚Ð°
+define('DBUSER', 'root'); // Ð¸Ð¼Ñ Ð¿Ð¾Ð»ÑŒÐ·Ð¾Ð²Ð°Ñ‚ÐµÐ»Ñ
+define('DBPASSWD', ''); // Ð¿Ð°Ñ€Ð¾Ð»ÑŒ
+define('DBNAME', 'test'); // Ð¸Ð¼Ñ Ð±Ð°Ð·Ñ‹ Ð´Ð°Ð½Ð½Ñ‹Ñ…
 
 ?>

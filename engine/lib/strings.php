@@ -1,12 +1,12 @@
-<?php
+ï»¿<?php
 /**
 *
-* ôóíêöèè äëÿ ðàáîòû ñî ñòðîêàìè
+* Ñ„ÑƒÐ½ÐºÑ†Ð¸Ð¸ Ð´Ð»Ñ Ñ€Ð°Ð±Ð¾Ñ‚Ñ‹ ÑÐ¾ ÑÑ‚Ñ€Ð¾ÐºÐ°Ð¼Ð¸
 *
 */
 
 /**
-* Ïðîâåðÿåò ÿâëÿåòñÿ ëè ñòðîêà àäðåñîì e-mail
+* ÐŸÑ€Ð¾Ð²ÐµÑ€ÑÐµÑ‚ ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð»Ð¸ ÑÑ‚Ñ€Ð¾ÐºÐ° Ð°Ð´Ñ€ÐµÑÐ¾Ð¼ e-mail
 */
 function strings_isemail($string)
 {
@@ -14,7 +14,7 @@ function strings_isemail($string)
 }
 
 /**
-* Äîáàâëåíèå ññûëîê íà http è e-mail
+* Ð”Ð¾Ð±Ð°Ð²Ð»ÐµÐ½Ð¸Ðµ ÑÑÑ‹Ð»Ð¾Ðº Ð½Ð° http Ð¸ e-mail
 */
 function strings_addlinks($string)
 {
@@ -26,7 +26,7 @@ function strings_addlinks($string)
 }
 
 /**
-* ×èñòêà ñòðîêè
+* Ð§Ð¸ÑÑ‚ÐºÐ° ÑÑ‚Ñ€Ð¾ÐºÐ¸
 */
 function strings_clear($string)
 {
@@ -36,7 +36,7 @@ function strings_clear($string)
 }
 
 /**
-* Îáðåçàíèå ñòðîêè
+* ÐžÐ±Ñ€ÐµÐ·Ð°Ð½Ð¸Ðµ ÑÑ‚Ñ€Ð¾ÐºÐ¸
 */
 function strings_stripstring($text, $wrap, $length)
 {

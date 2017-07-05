@@ -1,12 +1,12 @@
-<?php
+п»ї<?php
 /**
 *
-* Шаблон страниц
+* РЁР°Р±Р»РѕРЅ СЃС‚СЂР°РЅРёС†
 *
 */
 
 /**
-* заголовок страницы
+* Р·Р°РіРѕР»РѕРІРѕРє СЃС‚СЂР°РЅРёС†С‹
 */
 function template_header($page)
 {
@@ -44,7 +44,7 @@ margin-bottom: 4px;
 }
 
 /**
-* окончание страницы
+* РѕРєРѕРЅС‡Р°РЅРёРµ СЃС‚СЂР°РЅРёС†С‹
 */
 function template_footer()
 {
@@ -52,11 +52,11 @@ function template_footer()
 }
 
 /**
-* форма добавления новой записи
+* С„РѕСЂРјР° РґРѕР±Р°РІР»РµРЅРёСЏ РЅРѕРІРѕР№ Р·Р°РїРёСЃРё
 */
 function template_form($name, $email, $message, $error)
 {
-  // вывод сообщения об ошибке
+  // РІС‹РІРѕРґ СЃРѕРѕР±С‰РµРЅРёСЏ РѕР± РѕС€РёР±РєРµ
   function error($error)
   {
     if($error) echo '<br><font color=#880000>'.$error.'</font>';
@@ -91,12 +91,12 @@ function template_form($name, $email, $message, $error)
 }
 
 /**
-* печать одной записи гостевой книги
+* РїРµС‡Р°С‚СЊ РѕРґРЅРѕР№ Р·Р°РїРёСЃРё РіРѕСЃС‚РµРІРѕР№ РєРЅРёРіРё
 */
 function template_show_body($id, $name, $email, $www, $message, $datetime)
 {
   $out = '<div class=c><div class=cn><b>'.$name.'</b> ';
-  // если есть email или homepage -- печатаем их
+  // РµСЃР»Рё РµСЃС‚СЊ email РёР»Рё homepage -- РїРµС‡Р°С‚Р°РµРј РёС…
   if($email)
   {
     $out .= '( ';
@@ -104,8 +104,8 @@ function template_show_body($id, $name, $email, $www, $message, $datetime)
       $out .= ' <a href=mailto:'.$email.'>email</a>';
   $out .= ')';
  }
-  $out .= ' пишет '.$datetime.':</div>'.$message.'</div>';
-  // если гостевую книгу просматривает администратор -- печатаем кнопку удаления записи
+  $out .= ' РїРёС€РµС‚ '.$datetime.':</div>'.$message.'</div>';
+  // РµСЃР»Рё РіРѕСЃС‚РµРІСѓСЋ РєРЅРёРіСѓ РїСЂРѕСЃРјР°С‚СЂРёРІР°РµС‚ Р°РґРјРёРЅРёСЃС‚СЂР°С‚РѕСЂ -- РїРµС‡Р°С‚Р°РµРј РєРЅРѕРїРєСѓ СѓРґР°Р»РµРЅРёСЏ Р·Р°РїРёСЃРё
   if(auth_is_admin())
   {
     $out .= '<div class=c>[ <a href='.PATH.'?admin=1&del='.$id.'>exterminate!</a> ]</div>';
