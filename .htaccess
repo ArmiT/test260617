@@ -1,0 +1,6 @@
+AddDefaultCharset Off
+<IfModule dir_module>
+    DirectoryIndex index.php
+	AddDefaultCharset utf-8
+ErrorDocument 404 /page404.htm
+</IfModule>
