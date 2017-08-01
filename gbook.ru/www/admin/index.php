@@ -10,7 +10,7 @@
         <link type="text/css" rel="stylesheet" href="../style.css">
     </head>
     <body>
-        <?php include_once("../views/toolbar.php") ?>
+        <?php include_once("../views/toolbar.html") ?>
         <br><br><br>
         <table class="table table-hover">
           <thead>

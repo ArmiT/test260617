@@ -10,10 +10,10 @@
         <link type="text/css" rel="stylesheet" href="style.css">
     </head>
     <body>
-        <?php include("views/toolbar.php") ?>
+        <?php include("views/toolbar.html") ?>
         <div class="container-fluid">
           <div class="row">
-            <?php include_once("views/send_msg_pane.php") ?>
+            <?php include_once("views/send_msg_pane.html") ?>
             <?php include_once("adapters/msg_area_adapter.php") ?>
           </div>
         </div>
