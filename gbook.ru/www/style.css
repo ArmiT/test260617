@@ -1,0 +1,47 @@
+.navbar {
+    background: #34495e;
+}
+.navbar-brand, .navbar-brand:hover, .navbar-brand:focus, .navbar-nav > li > a {
+    color: #ecf0f1;
+}
+.navbar-nav > li > a:hover, .navbar-nav > li > a:focus {
+    background-color: #34495e;
+    color: #bdc3c7;
+}
+.sidebar {
+  background-color: #DADFE1;
+  position: fixed;
+  z-index: 1000;
+  display: block;
+  padding: 20px;
+  overflow-x: hidden;
+  overflow-y: auto;
+  border-right: 1px solid #eee;
+  height: 100%;
+}
+.msg-area {
+  resize: none;
+  min-height: 33em;
+}
+.btn-send {
+  width: 150px;
+  height: 50px;
+}
+.main {
+  padding-right: 50px;
+  padding-left: 50px;
+  padding-bottom: 20px;
+}
+label.error-validator {
+  color: #F44336;
+  font-size: 8pt;
+}
+textarea.error-validator,
+input.error-validator {
+  border-color: #F44336;
+  color: #F44336;
+}
+.ok-validator {
+  color: #00C853;
+  border-color: #00C853;
+}
